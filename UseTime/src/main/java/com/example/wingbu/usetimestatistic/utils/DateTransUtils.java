@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Wingbu on 2017/7/18.
@@ -72,5 +73,22 @@ public class DateTransUtils {
         long time = System.currentTimeMillis() - dayNumber * DAY_IN_MILLIS;
         Log.i("Wingbu"," DateTransUtils-getDateString()  获取查询的日期 :" + dateFormat.format(time));
         return dateFormat.format(time);
+    }
+
+    public static String buildTimeMilli(long duration) {
+        long total_seconds = duration / 1000;
+        long hours = total_seconds / 3600;
+        long minutes = (total_seconds % 3600) / 60;
+        long seconds = total_seconds % 60;
+        if (duration <= 0) {
+            return "--:--";
+        }
+        if (hours >= 100) {
+            return String.format(Locale.US, "%d:%02d:%02d", hours, minutes, seconds);
+        } else if (hours > 0) {
+            return String.format(Locale.US, "%02d:%02d:%02d", hours, minutes, seconds);
+        } else {
+            return String.format(Locale.US, "%02d:%02d", minutes, seconds);
+        }
     }
 }

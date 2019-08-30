@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">应用时间统计</string>
+    <string name="app_name">应用时间</string>
     <string name="app_use_count">使用次数 : </string>
     <string name="app_use_time">使用时长 : </string>
     <string name="app_calculate_use_time">计算所得使用时长 : </string>

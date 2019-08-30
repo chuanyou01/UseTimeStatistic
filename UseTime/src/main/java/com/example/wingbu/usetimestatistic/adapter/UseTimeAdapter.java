@@ -17,8 +17,10 @@ import com.example.wingbu.usetimestatistic.R;
 import com.example.wingbu.usetimestatistic.domain.OneTimeDetails;
 import com.example.wingbu.usetimestatistic.domain.PackageInfo;
 import com.example.wingbu.usetimestatistic.domain.UseTimeDataManager;
+import com.example.wingbu.usetimestatistic.utils.DateTransUtils;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Wingbu on 2017/7/19.
@@ -70,7 +72,7 @@ public class UseTimeAdapter extends RecyclerView.Adapter<UseTimeAdapter.UseTimeV
         holder.tv_used_count.setText(" " + mPackageInfoList.get(position).getmUsedCount()+"");
         holder.tv_calculate_used_time.setText(" " + mPackageInfoList.get(position).getmUsedTime()/1000+"s / " + DateUtils.formatElapsedTime(mPackageInfoList.get(position).getmUsedTime()/1000));
         //DateTransUtils.formatElapsedTime(mPackageInfoList.get(position).getmUsedTime()/1000)
-        holder.tv_used_time.setText(" " + getTotalTimeFromUsage(mPackageInfoList.get(position).getmPackageName())/1000+" s");
+        holder.tv_used_time.setText(" " + DateTransUtils.buildTimeMilli(getTotalTimeFromUsage(mPackageInfoList.get(position).getmPackageName())));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +82,8 @@ public class UseTimeAdapter extends RecyclerView.Adapter<UseTimeAdapter.UseTimeV
             }
         });
     }
+
+
 
     @Override
     public int getItemCount() {
